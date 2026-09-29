@@ -1,0 +1,59 @@
+CREATE TABLE Referees (
+    Referee_ID INT PRIMARY KEY,
+    Referee_Name VARCHAR(100) NOT NULL,
+    Nationality VARCHAR(100)
+);
+
+CREATE TABLE Matches (
+    Match_ID INT PRIMARY KEY,
+    Match_Date DATE,
+    Match_Time TIME,
+    Home_Team_ID INT,
+    Away_Team_ID INT,
+    Stadium_ID INT,
+    Referee_ID INT,
+    Home_Score INT,
+    Away_Score INT,
+    Stage VARCHAR(50),
+    FOREIGN KEY (Home_Team_ID) REFERENCES Teams(Team_ID),
+    FOREIGN KEY (Away_Team_ID) REFERENCES Teams(Team_ID),
+    FOREIGN KEY (Stadium_ID) REFERENCES Stadiums(Stadium_ID),
+    FOREIGN KEY (Referee_ID) REFERENCES Referees(Referee_ID)
+);
+
+CREATE TABLE Goals (
+    Goal_ID INT PRIMARY KEY,
+    Match_ID INT,
+    Player_ID INT,
+    Team_ID INT,
+    Goal_Minute INT,
+    FOREIGN KEY (Match_ID) REFERENCES Matches(Match_ID),
+    FOREIGN KEY (Player_ID) REFERENCES Players(Player_ID),
+    FOREIGN KEY (Team_ID) REFERENCES Teams(Team_ID)
+);
+
+CREATE TABLE Cards (
+    Card_ID INT PRIMARY KEY,
+    Match_ID INT,
+    Player_ID INT,
+    Team_ID INT,
+    Card_Type VARCHAR(20),
+    Card_Minute INT,
+    FOREIGN KEY (Match_ID) REFERENCES Matches(Match_ID),
+    FOREIGN KEY (Player_ID) REFERENCES Players(Player_ID),
+    FOREIGN KEY (Team_ID) REFERENCES Teams(Team_ID)
+);
+
+CREATE TABLE Standings (
+    Standing_ID INT PRIMARY KEY,
+    Team_ID INT,
+    Played INT,
+    Won INT,
+    Drawn INT,
+    Lost INT,
+    Goals_For INT,
+    Goals_Against INT,
+    Goal_Difference INT,
+    Points INT,
+    FOREIGN KEY (Team_ID) REFERENCES Teams(Team_ID)
+);
