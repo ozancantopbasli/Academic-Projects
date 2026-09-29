@@ -36,7 +36,6 @@ Execute the SQL scripts in the following exact chronological order to deploy the
 | **3** | `📄 03_insert_base.sql` | Seeds the database with master lookup datasets (Historical teams, player rosters). |
 | **4** | `📄 04_insert_match_data.sql` | Populates operational match records, dynamic goals, and event timelines. |
 | **5** | `📊 05_queries.sql` | Production-grade SQL queries engineered for data analysis and reporting. |
-| **6** | `📘 Project Report.docx` | Comprehensive engineering documentation detailing the entity-relationship diagrams (ERD). |
 
 ---
 
